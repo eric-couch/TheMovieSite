@@ -3,24 +3,79 @@
   margin: 0px;
   padding: 0px;
   font-family: "ZCOOL KuaiLe", cursive;
-  font-size: 8pt;
+  font-size: 14pt;
 }
 .main {
   position: relative;
   border: 2px solid red;
   background-color: lightgreen;
-  height: 30em;
   width: 100%;
+  height: 500px;
   padding: 0px;
   overflow-y: auto;
   border-radius: 25px;
 }
-.movie {
+.item {
   line-height: 2em;
   list-style-type: none;
 }
 
 .outer {
   text-align: center;
-  width: 80%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 600px;
+  height: 500px;
+  margin-left: -300px; /*  -1/2width */
+  margin-top: -250px; /*  -1/2height */
+}
+
+.movienav {
+  width: 600px;
+  position: absolute;
+  bottom: 0px;
+  cursor: pointer;
+  font: 14pt bold;
+  /*  */
+}
+
+#leftarrow {
+  text-align: left;
+  width: 150px;
+}
+
+#rightarrow {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  text-align: right;
+  width: 200px;
+}
+
+#middlenav {
+  width: 150px;
+  left: 250px;
+  bottom: 0px;
+  position: absolute;
+}
+
+.movie {
+  color: red;
+}
+
+.series {
+  color: MAROON;
+}
+
+.game {
+  color: OLIVE;
+}
+
+.legend {
+  width: 600px;
+  position: absolute;
+  bottom: 30px;
+  cursor: pointer;
+  font: 14pt bold;
 }
