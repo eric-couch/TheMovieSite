@@ -16,6 +16,14 @@ function getMovieList(search, page) {
   }
 }
 
+function getMovie(imdbID) {
+  console.log(imdbID);
+  const apiKey = "86c39163";
+  fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}`)
+    .then(r => r.json())
+    .then(body => buildMovie(body));
+}
+
 function buildResults(search, movieList, pageNum) {
   console.log(movieList);
   let main = document.querySelector("#main");
@@ -23,11 +31,14 @@ function buildResults(search, movieList, pageNum) {
   let movieUL = document.createElement("ul");
   const { totalResults } = movieList; // destructuring
   movieList.Search.forEach(function(movie) {
-    const { Title, Year, Type } = movie; // destructuring
+    const { Title, Year, Type, imdbID } = movie; // destructuring
     let movieLI = document.createElement("li");
     movieLI.classList.add("item");
     movieLI.classList.add(Type);
     movieLI.innerText = `${Title} (${Year})`;
+    movieLI.addEventListener("click", function() {
+      getMovie(imdbID);
+    });
     movieUL.appendChild(movieLI);
   });
   main.appendChild(movieUL);
@@ -59,4 +70,10 @@ function buildResults(search, movieList, pageNum) {
   movieNav.classList = "movienav";
   movieDiv = document.querySelector("#main");
   movieDiv.appendChild(movieNav);
+}
+
+function buildMovie(body) {
+  let main = document.querySelector("#main");
+  console.log(body);
+  main.innerHTML = body.Plot;
 }
